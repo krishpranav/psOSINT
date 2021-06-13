@@ -72,6 +72,8 @@ function Search-AlienVault {
 
         if ($Endpoint -eq "IPv4") {
             if ($_ -in @("general","geo","http_scans","malware","passive_dns","reputation","url_list")) {@True}
+        } elseif ($Endpoint -eq "IPv6") {
+            if ($_ -in @("general","geo","http_scans","malware","passive_dns","reputation")) {@True}
         }
     })]
 }
