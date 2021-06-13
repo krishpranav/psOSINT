@@ -67,4 +67,6 @@ function Search-AlienVault {
     [ValidateSet("IPv4","IPv6","domain","hostname","file","url","cve")]
     [string]$Endpoint,
     [Parameter(Mandatory=$true, ValueFromPipeline=$true)]
+    [ValidateSet("analysis","general","geo","http_scans","malware","passive_dns","reputation","url_list","whois")]
+    
 }
