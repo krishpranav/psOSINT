@@ -65,4 +65,6 @@
 function Search-AlienVault {
     [CmdletBinding()]
     [ValidateSet("IPv4","IPv6","domain","hostname","file","url","cve")]
+    [string]$Endpoint,
+    [Parameter(Mandatory=$true, ValueFromPipeline=$true)]
 }
