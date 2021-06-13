@@ -29,3 +29,8 @@
     .LINK
     https://github.com/krishpranav/psOSINT/
 #>
+
+
+function Search-Censys {
+    [CmdletBinding()]
+}
