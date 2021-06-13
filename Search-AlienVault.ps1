@@ -101,6 +101,10 @@ function Search-AlienVault {
             $IpVersion = $Endpoint[-1]
             $Endpoint = "IPv$IpVersion"
         }
+
+        $Uri = "https://otx.alienvault.com/api/v1/indicators/$Endpoint/$Query/$Section"
     }
+    Process {Search-Api}
+    End {Reset-SslDefaults; Write-Verbose "Complete"}
 
 }
