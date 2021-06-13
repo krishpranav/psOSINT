@@ -48,5 +48,10 @@ function Search-Censys {
         [ValidateScript({
             if ($Endpoint -in @('search', 'view')) {@True}
         })]
+        [string]$Query,
+        [Parameter(Mandatory=$false)]
+        [ValidateScript({
+            if ($Endpoint -eq 'view') {@True}
+        })]
     )
 }
