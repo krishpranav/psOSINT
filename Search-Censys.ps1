@@ -43,6 +43,7 @@ function Search-Censys {
         [ValidateSet('search','view','account')]
         [string]$Endpoint,
 
-        
+        [Parameter(Mandatory=$false)]
+        [ValidateSet('ipv4','websites','certifactes')]
     )
 }
