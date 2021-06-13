@@ -4,8 +4,10 @@
                  
     .DESCRIPTION
     Gather Open-Source Intelligence from AlienVault using PowerShell.
+
     .EXAMPLE
     Search-AlienVault -Endpoint IPv4 -Section general -Query 187.233.152.78 | Format-List
+
     sections       : {general, geo, reputation, url_list...}                                      
     city           : Aguascalientes                   
     area_code      : 0                               
@@ -30,38 +32,47 @@
     latitude       : 21.8956                                
     type           : IPv4                                   
     flag_title     : Mexico
+
+
     ##########################################################################
     Available options not found in 'Get-Help Search-AlienVault' SYNTAX section
     ##########################################################################
+
     Endpoint: IPv4
     Section : [general,geo,http_scans,malware,passive_dns,reputation,url_list]
     Query   : STRING
+
     Endpoint: IPv6
     Section : [general,geo,http_scans,malware,passive_dns,reputation]
     Query   : STRING
+
     Endpoint: domain
     Section : [general,geo,http_scans,malware,passive_dns,url_list,whois]
     Query   : STRING
+
     Endpoint: hostname
     Section : [general,geo,http_scans,malware,passive_dns,url_list]
     Query   : STRING
+
     Endpoint: file
     Section : [analysis,general]
     Query   : STRING
+
     Endpoint: url
     Section : [general,url_list]
     Query   : STRING
+
     Endpoint: cve
     Section : [general]
     Query   : STRING
+
     ##########################################################################
     Available options not found in 'Get-Help Search-AlienVault' SYNTAX section
     ##########################################################################
     
     .LINK
-    https://github.com/krishpranav/psOSINT/
+    https://github.com/krishpranav/psOSINT
 #>
-
 function Search-AlienVault {
     [CmdletBinding()]
     param(
@@ -92,7 +103,7 @@ function Search-AlienVault {
         [Parameter(Mandatory=$true)]
         [string]$Query
     )
-
+    
     Begin {
         Set-SslDefaults
         Set-ModuleDefaults
@@ -101,10 +112,9 @@ function Search-AlienVault {
             $IpVersion = $Endpoint[-1]
             $Endpoint = "IPv$IpVersion"
         }
-
+        
         $Uri = "https://otx.alienvault.com/api/v1/indicators/$Endpoint/$Query/$Section"
     }
     Process {Search-Api}
     End {Reset-SslDefaults; Write-Verbose "Complete"}
-
 }
