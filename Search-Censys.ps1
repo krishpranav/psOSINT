@@ -53,5 +53,9 @@ function Search-Censys {
         [ValidateScript({
             if ($Endpoint -eq 'view') {@True}
         })]
+        [string]$Id,
+
+        [Parameter(Mandatory=$false)]
+        [int]$Page = 1
     )
 }
