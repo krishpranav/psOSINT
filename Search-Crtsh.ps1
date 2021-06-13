@@ -18,3 +18,7 @@
     .LINK
     https://github.com/krishpranav/psOSINT/
 #>
+
+function Search-Crtsh {
+    [CmdletBinding()]
+}
