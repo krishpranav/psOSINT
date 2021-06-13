@@ -58,4 +58,11 @@ function Search-Censys {
         [Parameter(Mandatory=$false)]
         [int]$Page = 1
     )
+
+    Begin {
+        Set-SslDefalts
+        Set-ModuleDefalts
+
+        $BaseUri = "https://censys.io/api/v1/$Endpoint"
+    }
 }
