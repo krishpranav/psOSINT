@@ -93,4 +93,9 @@ function Search-AlienVault {
         [string]$Query
     )
 
+    Begin {
+        Set-SslDefaults
+        Set-ModuleDefaults
+    }
+
 }
