@@ -27,4 +27,15 @@ function Search-Crtsh {
         [Parameter(Mandatory=$false)]
         [switch]$Wildcard
     )
+
+    Begin {
+        Set-SslDefaults
+        Set-ModuleDefaults
+
+        if ($Wildcard) {
+            $Query = "%25.$Query"
+        }
+
+        $Uri = "https://crt.sh/`?q=$Query&output=json".ToLower()
+    }
 }
