@@ -69,11 +69,23 @@ function Search-AlienVault {
     [Parameter(Mandatory=$true, ValueFromPipeline=$true)]
     [ValidateSet("analysis","general","geo","http_scans","malware","passive_dns","reputation","url_list","whois")]
     [ValidateScript({
-
+        #
+        # Mismatch detected. Use 'Get-Help Search-AlienVault -Examples' to see available options.
+        #
         if ($Endpoint -eq "IPv4") {
-            if ($_ -in @("general","geo","http_scans","malware","passive_dns","reputation","url_list")) {@True}
+            if ($_ -in @("general","geo","http_scans","malware","passive_dns","reputation","url_list")) {$True}
         } elseif ($Endpoint -eq "IPv6") {
-            if ($_ -in @("general","geo","http_scans","malware","passive_dns","reputation")) {@True}
+            if ($_ -in @("general","geo","http_scans","malware","passive_dns","reputation")) {$True}
+        } elseif ($Endpoint -eq "domain") {
+            if ($_ -in @("general","geo","http_scans","malware","passive_dns","url_list","whois")) {$True}
+        } elseif ($Endpoint -eq "hostname") {
+            if ($_ -in @("general","geo","http_scans","malware","passive_dns","url_list")) {$True}
+        } elseif ($Endpoint -eq "file") {
+            if ($_ -in @("analysis","general")) {$True}
+        } elseif ($Endpoint -eq "url") {
+            if ($_ -in @("general","url_list")) {$True}
+        } elseif ($Endpoint -eq "cve") {
+            if ($_ -in @("general")) {$True}
         }
     })]
 }
