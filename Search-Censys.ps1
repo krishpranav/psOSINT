@@ -45,5 +45,8 @@ function Search-Censys {
 
         [Parameter(Mandatory=$false)]
         [ValidateSet('ipv4','websites','certifactes')]
+        [ValidateScript({
+            if ($Endpoint -in @('search', 'view')) {@True}
+        })]
     )
 }
