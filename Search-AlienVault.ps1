@@ -68,5 +68,10 @@ function Search-AlienVault {
     [string]$Endpoint,
     [Parameter(Mandatory=$true, ValueFromPipeline=$true)]
     [ValidateSet("analysis","general","geo","http_scans","malware","passive_dns","reputation","url_list","whois")]
-    
+    [ValidateScript({
+
+        if ($Endpoint -eq "IPv4") {
+            if ($_ -in @("general","geo","http_scans","malware","passive_dns","reputation","url_list")) {@True}
+        }
+    })]
 }
