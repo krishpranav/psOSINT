@@ -61,3 +61,8 @@
     .LINK
     https://github.com/krishpranav/psOSINT/
 #>
+
+function Search-AlienVault {
+    [CmdletBinding()]
+    
+}
