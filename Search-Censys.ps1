@@ -38,5 +38,11 @@ function Search-Censys {
         [string]$Uid,
         [Parameter(Mandatory=$true)]
         [string]$Secret,
+
+        [Parameter(Mandatory=$true)]
+        [ValidateSet('search','view','account')]
+        [string]$Endpoint,
+
+        
     )
 }
