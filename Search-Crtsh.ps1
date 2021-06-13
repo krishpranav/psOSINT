@@ -21,4 +21,10 @@
 
 function Search-Crtsh {
     [CmdletBinding()]
+    param(
+        [Parameter(Mandatory=$true)]
+        [string]$Query,
+        [Parameter(Mandatory=$false)]
+        [switch]$Wildcard
+    )
 }
