@@ -33,4 +33,10 @@
 
 function Search-Censys {
     [CmdletBinding()]
+    param(
+        [Parameter(Mandatory=$true)]
+        [string]$Uid,
+        [Parameter(Mandatory=$true)]
+        [string]$Secret,
+    )
 }
