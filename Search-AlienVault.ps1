@@ -96,6 +96,11 @@ function Search-AlienVault {
     Begin {
         Set-SslDefaults
         Set-ModuleDefaults
+
+        if ($Endpoint -in @("IPv4", "IPv6") -and $Endpoint -cnotlike "IPv*") {
+            $IpVersion = $Endpoint[-1]
+            $Endpoint = "IPv$IpVersion"
+        }
     }
 
 }
