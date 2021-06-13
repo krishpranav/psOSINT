@@ -64,28 +64,33 @@
 
 function Search-AlienVault {
     [CmdletBinding()]
-    [ValidateSet("IPv4","IPv6","domain","hostname","file","url","cve")]
-    [string]$Endpoint,
-    [Parameter(Mandatory=$true, ValueFromPipeline=$true)]
-    [ValidateSet("analysis","general","geo","http_scans","malware","passive_dns","reputation","url_list","whois")]
-    [ValidateScript({
-        #
-        # Mismatch detected. Use 'Get-Help Search-AlienVault -Examples' to see available options.
-        #
-        if ($Endpoint -eq "IPv4") {
-            if ($_ -in @("general","geo","http_scans","malware","passive_dns","reputation","url_list")) {$True}
-        } elseif ($Endpoint -eq "IPv6") {
-            if ($_ -in @("general","geo","http_scans","malware","passive_dns","reputation")) {$True}
-        } elseif ($Endpoint -eq "domain") {
-            if ($_ -in @("general","geo","http_scans","malware","passive_dns","url_list","whois")) {$True}
-        } elseif ($Endpoint -eq "hostname") {
-            if ($_ -in @("general","geo","http_scans","malware","passive_dns","url_list")) {$True}
-        } elseif ($Endpoint -eq "file") {
-            if ($_ -in @("analysis","general")) {$True}
-        } elseif ($Endpoint -eq "url") {
-            if ($_ -in @("general","url_list")) {$True}
-        } elseif ($Endpoint -eq "cve") {
-            if ($_ -in @("general")) {$True}
-        }
-    })]
+    param(
+        [Parameter(Mandatory=$true)]
+        [ValidateSet("IPv4","IPv6","domain","hostname","file","url","cve")]
+        [string]$Endpoint,
+        [Parameter(Mandatory=$true, ValueFromPipeline=$true)]
+
+        [ValidateSet("analysis","general","geo","http_scans","malware","passive_dns","reputation","url_list","whois")]
+        [ValidateScript({
+            if ($Endpoint -eq "IPv4") {
+                if ($_ -in @("general","geo","http_scans","malware","passive_dns","reputation","url_list")) {$True}
+            } elseif ($Endpoint -eq "IPv6") {
+                if ($_ -in @("general","geo","http_scans","malware","passive_dns","reputation")) {$True}
+            } elseif ($Endpoint -eq "domain") {
+                if ($_ -in @("general","geo","http_scans","malware","passive_dns","url_list","whois")) {$True}
+            } elseif ($Endpoint -eq "hostname") {
+                if ($_ -in @("general","geo","http_scans","malware","passive_dns","url_list")) {$True}
+            } elseif ($Endpoint -eq "file") {
+                if ($_ -in @("analysis","general")) {$True}
+            } elseif ($Endpoint -eq "url") {
+                if ($_ -in @("general","url_list")) {$True}
+            } elseif ($Endpoint -eq "cve") {
+                if ($_ -in @("general")) {$True}
+            }
+        })]
+        [string]$Section,
+        [Parameter(Mandatory=$true)]
+        [string]$Query
+    )
+
 }
